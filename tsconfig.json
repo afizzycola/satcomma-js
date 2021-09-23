@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "outDir": "./src",
+    "allowJs": true,
+    "target": "ES2015",
+    "types": [
+      "node",
+      "jest"
+    ],
+    "watch": true,
+    "esModuleInterop": false,
+  },
+  "include": ["./ts_src/**/*"]
+}
