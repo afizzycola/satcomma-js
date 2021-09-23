@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "description": "",
   "main": "./src/index.js",
+  "types": "./dist/index.d.ts",
   "scripts": {
     "test": "jest"
   },
@@ -11,12 +12,12 @@
     "url": "git+https://github.com/LaLiLuLeLoL/satcomma-js"
   },
   "keywords": [
+    "satcomma",
     "bitcoin",
-    "satcomma"
+    "satoshi"
   ],
   "files": [
-    "src",
-    "dist"
+    "src"
   ],
   "author": "Andreas Cola (LaLiLuLeLoL)",
   "license": "MIT",
