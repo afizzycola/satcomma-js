@@ -1,7 +1,12 @@
+import errors from "../ts_src/errors"
+
+
+type AssertTuple = [number, string | undefined]
+
 interface TestDataTemplate {
-    fromBitcoin: Array<[number, string]>;
-    fromSats: Array<[number, string]>;
-    fromBits: Array<[number, string]>;
+    fromBitcoin: Array<AssertTuple>;
+    fromSats: Array<AssertTuple>;
+    fromBits: Array<AssertTuple>;
 }
 
 export const testData: TestDataTemplate = {
@@ -49,5 +54,44 @@ export const testData: TestDataTemplate = {
         [10,"0.00,001,000"],
         [1,"0.00,000,100"],
         [100000, "0.10,000,000"],
+    ],
+};
+
+// here the second value of the AssertTuple is the expectation of if it errors 
+// e.g true means error expected
+export const errorTestData: TestDataTemplate = {
+    fromBitcoin: [
+        [-1, errors.SATS_RANGE_ERR],
+        [0, undefined],
+        [1, undefined],
+        [20_999_999, undefined],
+        [21_000_000, undefined],
+        [21_000_001, errors.SATS_RANGE_ERR],
+        [21e6, undefined],
+        [211e6, errors.SATS_RANGE_ERR],
+    ],
+    fromSats: [
+        [-1, errors.SATS_RANGE_ERR],
+        [0, undefined],
+        [1, undefined],
+        [20_999_999 * 1e8, undefined],
+        [21_000_000 * 1e8, undefined],
+        [21_000_001 * 1e8, errors.SATS_RANGE_ERR],
+        [1.1, errors.SATS_NOT_INT_ERR],
+        [1e-2, errors.SATS_NOT_INT_ERR],
+    ],
+    fromBits: [
+        [-1, errors.SATS_RANGE_ERR],
+        [0, undefined],
+        [1, undefined],
+        [20_999_999 * 1e6, undefined],
+        [21_000_000 * 1e6, undefined],
+        [21_000_001 * 1e6, errors.SATS_RANGE_ERR],
+        [1.1, undefined],
+        [1.11, undefined],
+        [1.111, errors.BITS_PRECISION_ERR],
+        [1.110, undefined],
+        [1.11000, undefined],
+        [1e-4, errors.BITS_PRECISION_ERR],
     ],
 };

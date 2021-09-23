@@ -12,7 +12,7 @@
     ],
     "watch": true,
     "moduleResolution": "node",
-    "esModuleInterop": false,
+    "esModuleInterop": true,
   },
   "include": ["./ts_src/**/*"]
 }

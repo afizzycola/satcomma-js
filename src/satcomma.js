@@ -1,6 +1,12 @@
+import errors from "./errors";
+const MAX_SATOSHIS = 21000000 * 1e8;
+function checkMaxSatoshis(satoshis) {
+    if (satoshis > MAX_SATOSHIS || satoshis < 0) {
+        throw new TypeError(errors.SATS_RANGE_ERR);
+    }
+}
 export function fromBitcoin(valueInBitcoin) {
-    //TO DOcheck is not larger than max Bitcoin
-    //TO DOcheck is not larger than max satoshi
+    checkMaxSatoshis(valueInBitcoin * 1e8);
     const intDecArray = valueInBitcoin.toFixed(8)
         .toString()
         .split('.');
@@ -21,13 +27,19 @@ export function fromBitcoin(valueInBitcoin) {
     return result;
 }
 export function fromSats(valueInsats) {
-    //TO DOcheck is not larger than max Bitcoin
-    //TO DOcheck is not larger than max satoshi
-    // check is integer
+    if (!Number.isInteger(valueInsats)) {
+        throw new TypeError(errors.SATS_NOT_INT_ERR);
+    }
     // convert satoshis to bitcoin
-    return fromBitcoin(valueInsats / 100000000);
+    return fromBitcoin(valueInsats / 1e8);
 }
 export function fromBits(valueInBip176Bits) {
+    if (!Number.isInteger(valueInBip176Bits)) {
+        const decs = valueInBip176Bits.toString().split('.')[1];
+        if (decs.length > 2) {
+            throw new TypeError(errors.BITS_PRECISION_ERR);
+        }
+    }
     // convert bits to bitcoin
-    return fromBitcoin(valueInBip176Bits / 1000000);
+    return fromBitcoin(valueInBip176Bits / 1e6);
 }
