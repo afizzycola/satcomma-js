@@ -3,6 +3,7 @@
     "outDir": "./src",
     "allowJs": true,
     "target": "ES2015",
+    "module": "commonjs",
     "declaration": true,
     "lib": [
       "ES2017"
@@ -12,7 +13,6 @@
       "jest"
     ],
     "watch": true,
-    "moduleResolution": "node",
     "esModuleInterop": true,
   },
   "include": ["./ts_src/**/*"]

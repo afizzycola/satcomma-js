@@ -1,7 +1,7 @@
 {
   "name": "satcomma",
   "version": "0.1.2",
-  "description": "",
+  "description": "Small library that converts values either in Bitcoin, Satoshis or BIP-0176 Bits, into the proposed Satcomma standard notation format.",
   "main": "./src/index.js",
   "types": "./src/index.d.ts",
   "scripts": {
