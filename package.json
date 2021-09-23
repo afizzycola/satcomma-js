@@ -1,5 +1,5 @@
 {
-  "name": "template",
+  "name": "satcomma",
   "version": "0.0.1",
   "description": "",
   "main": "./src/index.js",
@@ -8,10 +8,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/LaLiLuLeLoL/$template"
+    "url": "git+https://github.com/LaLiLuLeLoL/satcomma-js"
   },
   "keywords": [
-    "$template"
+    "bitcoin",
+    "satcomma"
   ],
   "files": [
     "src",
@@ -20,9 +21,9 @@
   "author": "Andreas Cola (LaLiLuLeLoL)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/LaLiLuLeLoL/$template/issues"
+    "url": "https://github.com/LaLiLuLeLoL/satcomma-js/issues"
   },
-  "homepage": "https://github.com/LaLiLuLeLoL/$template#readme",
+  "homepage": "https://github.com/LaLiLuLeLoL/satcomma-js#readme",
   "devDependencies": {
     "@types/jest": "^26.0.23",
     "jest": "^26.6.3",
