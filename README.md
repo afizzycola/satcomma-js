@@ -1,4 +1,4 @@
-# $NAME
+# Satcomma Javascript Library
 
 ## Example use
 
