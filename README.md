@@ -1,4 +1,5 @@
 # Satcomma Javascript Library
+![npm](https://img.shields.io/npm/v/satcomma)
 
 Small library that converts values either in Bitcoin, Satoshis or [BIP-0176 Bits](https://github.com/bitcoin/bips/blob/master/bip-0176.mediawiki), into the proposed [Satcomma Standard](https://medium.com/coinmonks/the-satcomma-standard-89f1e7c2aede) notation format.
 
