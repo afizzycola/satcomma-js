@@ -17,7 +17,8 @@
     "satoshi"
   ],
   "files": [
-    "src"
+    "src",
+    "types"
   ],
   "author": "Andreas Cola (afizzycola)",
   "license": "MIT",
