@@ -1,10 +1,11 @@
 {
   "compilerOptions": {
     "outDir": "./src",
-    "allowJs": true,
-    "target": "ES2015",
+    "allowJs": false,
+    "target": "ES2017",
     "module": "commonjs",
     "declaration": true,
+    "declarationDir": "./types",
     "lib": [
       "ES2017"
     ],
@@ -14,6 +15,16 @@
     ],
     "watch": true,
     "esModuleInterop": true,
+    "strict": true,
+    "noImplicitAny": true,
+    "strictNullChecks": true,
+    "strictFunctionTypes": true,
+    "strictBindCallApply": true,
+    "strictPropertyInitialization": true,
+    "noImplicitThis": true,
+    "alwaysStrict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true
   },
   "include": ["./ts_src/**/*"]
 }

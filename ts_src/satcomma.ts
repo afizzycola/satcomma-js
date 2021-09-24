@@ -2,7 +2,7 @@ import errors from "./errors";
 
 
 const MAX_SATOSHIS = 21000000 * 1e8;
-function checkMaxSatoshis (satoshis) {
+function checkMaxSatoshis (satoshis: number): void {
   if (satoshis > MAX_SATOSHIS || satoshis < 0) {
     throw new TypeError(errors.SATS_RANGE_ERR)
   }
