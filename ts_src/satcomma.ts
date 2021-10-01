@@ -8,7 +8,7 @@ function checkMaxSatoshis (satoshis: number): void {
   }
 }
 
-export function fromBitcoin(valueInBitcoin: number): string {
+export function fromBitcoin(valueInBitcoin: number, delimiterForSats: string = ","): string {
     checkMaxSatoshis(valueInBitcoin * 1e8);
     const intDecArray = valueInBitcoin.toFixed(8)
         .toString()
@@ -19,25 +19,25 @@ export function fromBitcoin(valueInBitcoin: number): string {
     result += "."
     if (decs) {
         result += (decs.substr(0, 2)) ? decs.substr(0, 2).padEnd(2, "0") : "00"
-        result += ","
+        result += delimiterForSats
         result += (decs.substr(2, 3)) ? decs.substr(2, 3).padEnd(3, "0") : "000"
-        result += ","
+        result += delimiterForSats
         result += (decs.substr(5, 3)) ? decs.substr(5, 3).padEnd(3, "0") : "000"
     } else {
-        result += "00,000,000"
+        result += `00${delimiterForSats}000${delimiterForSats}000`
     }
     return result
 }
 
-export function fromSats(valueInsats: number): string {
+export function fromSats(valueInsats: number, delimiterForSats: string = ","): string {
     if (!Number.isInteger(valueInsats)) {
       throw new TypeError(errors.SATS_NOT_INT_ERR)
     }
     // convert satoshis to bitcoin
-    return fromBitcoin(valueInsats / 1e8)
+    return fromBitcoin(valueInsats / 1e8, delimiterForSats)
 }
 
-export function fromBits(valueInBip176Bits: number): string {
+export function fromBits(valueInBip176Bits: number, delimiterForSats: string = ","): string {
     if (!Number.isInteger(valueInBip176Bits)) {
         const decs = valueInBip176Bits.toString().split('.')[1];
         if (decs.length > 2) {
@@ -45,5 +45,5 @@ export function fromBits(valueInBip176Bits: number): string {
         }
     }
     // convert bits to bitcoin
-    return fromBitcoin(valueInBip176Bits / 1e6)
+    return fromBitcoin(valueInBip176Bits / 1e6, delimiterForSats)
 }
