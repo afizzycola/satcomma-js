@@ -3,15 +3,15 @@ Small library that converts values either in Bitcoin, Satoshis or [BIP-0176 Bits
 
 ![npm](https://img.shields.io/npm/v/satcomma)
 ## Methods
-Each method takes in one javascript number argument wand returns a string. Methods includes are:
+Each method takes in a mandatory javascript number argument and an optional delimiter string used to separate the sats. By default the delimiter is set as a comma but it can be anything you want. The result of each method is a string. Methods include:
 ```
-satcomma.fromBitcoin(number): string
-```
-```
-satcomma.fromSats(number): string
+satcomma.fromBitcoin(number, string?): string
 ```
 ```
-satcomma.fromBits(number): string
+satcomma.fromSats(number, string?): string
+```
+```
+satcomma.fromBits(number, string?): string
 ```
 
 ## Example use
@@ -24,6 +24,10 @@ satcomma.fromBitcoin(6.15000001) // => "6.15,000,001"
 satcomma.fromSats(698000) // => "0.00,698,000"
 
 satcomma.fromBits(698) // => "0.00,698,000"
+
+satcomma.fromBitcoin(6.15000001, " ") // => "6.15 000 001"
+
+satcomma.fromSats(698000, "'") // => "0.00'698'000"
 ```
 
 ## Error handling
