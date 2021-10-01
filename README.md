@@ -3,7 +3,7 @@ Small library that converts values either in Bitcoin, Satoshis or [BIP-0176 Bits
 
 ![npm](https://img.shields.io/npm/v/satcomma)
 ## Methods
-Each method takes in a mandetory javascript number argument and optional delimiter string used to seperate the sats. By default this is a comma but it can be anything you want. The result of each method is a string. Methods includes are:
+Each method takes in a mandatory javascript number argument and an optional delimiter string used to separate the sats. By default the delimiter is set as a comma but it can be anything you want. The result of each method is a string. Methods include:
 ```
 satcomma.fromBitcoin(number, string?): string
 ```

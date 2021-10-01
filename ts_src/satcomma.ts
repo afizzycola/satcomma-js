@@ -29,12 +29,12 @@ export function fromBitcoin(valueInBitcoin: number, delimiterForSats: string = "
     return result
 }
 
-export function fromSats(valueInsats: number, delimiterForSats: string = ","): string {
-    if (!Number.isInteger(valueInsats)) {
+export function fromSats(valueInSats: number, delimiterForSats: string = ","): string {
+    if (!Number.isInteger(valueInSats)) {
       throw new TypeError(errors.SATS_NOT_INT_ERR)
     }
     // convert satoshis to bitcoin
-    return fromBitcoin(valueInsats / 1e8, delimiterForSats)
+    return fromBitcoin(valueInSats / 1e8, delimiterForSats)
 }
 
 export function fromBits(valueInBip176Bits: number, delimiterForSats: string = ","): string {
