@@ -33,12 +33,12 @@ function fromBitcoin(valueInBitcoin, delimiterForSats = ",") {
     return result;
 }
 exports.fromBitcoin = fromBitcoin;
-function fromSats(valueInsats, delimiterForSats = ",") {
-    if (!Number.isInteger(valueInsats)) {
+function fromSats(valueInSats, delimiterForSats = ",") {
+    if (!Number.isInteger(valueInSats)) {
         throw new TypeError(errors_1.default.SATS_NOT_INT_ERR);
     }
     // convert satoshis to bitcoin
-    return fromBitcoin(valueInsats / 1e8, delimiterForSats);
+    return fromBitcoin(valueInSats / 1e8, delimiterForSats);
 }
 exports.fromSats = fromSats;
 function fromBits(valueInBip176Bits, delimiterForSats = ",") {
