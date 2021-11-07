@@ -11,8 +11,10 @@ function checkMaxSatoshis(satoshis) {
         throw new TypeError(errors_1.default.SATS_RANGE_ERR);
     }
 }
-function fromBitcoin(valueInBitcoin, delimiterForSats = ",") {
-    checkMaxSatoshis(valueInBitcoin * 1e8);
+function fromBitcoin(valueInBitcoin, delimiterForSats = ",", validate = true) {
+    if (validate) {
+        checkMaxSatoshis(valueInBitcoin * 1e8);
+    }
     const intDecArray = valueInBitcoin.toFixed(8)
         .toString()
         .split('.');
@@ -33,15 +35,15 @@ function fromBitcoin(valueInBitcoin, delimiterForSats = ",") {
     return result;
 }
 exports.fromBitcoin = fromBitcoin;
-function fromSats(valueInSats, delimiterForSats = ",") {
+function fromSats(valueInSats, delimiterForSats = ",", validate = true) {
     if (!Number.isInteger(valueInSats)) {
         throw new TypeError(errors_1.default.SATS_NOT_INT_ERR);
     }
     // convert satoshis to bitcoin
-    return fromBitcoin(valueInSats / 1e8, delimiterForSats);
+    return fromBitcoin(valueInSats / 1e8, delimiterForSats, validate);
 }
 exports.fromSats = fromSats;
-function fromBits(valueInBip176Bits, delimiterForSats = ",") {
+function fromBits(valueInBip176Bits, delimiterForSats = ",", validate = true) {
     if (!Number.isInteger(valueInBip176Bits)) {
         const decs = valueInBip176Bits.toString().split('.')[1];
         if (decs.length > 2) {
@@ -49,6 +51,6 @@ function fromBits(valueInBip176Bits, delimiterForSats = ",") {
         }
     }
     // convert bits to bitcoin
-    return fromBitcoin(valueInBip176Bits / 1e6, delimiterForSats);
+    return fromBitcoin(valueInBip176Bits / 1e6, delimiterForSats, validate);
 }
 exports.fromBits = fromBits;

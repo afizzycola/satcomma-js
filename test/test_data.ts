@@ -2,9 +2,11 @@ import errors from "../ts_src/errors"
 
 
 type AssertTuple = [number, string | undefined]
+type AssertTupleValidate = [number, string | undefined, boolean | undefined]
 
 interface TestDataTemplate {
     fromBitcoin: Array<AssertTuple>;
+    fromBitcoinValidate: Array<AssertTupleValidate>;
     fromSats: Array<AssertTuple>;
     fromBits: Array<AssertTuple>;
 }
@@ -22,6 +24,9 @@ export const testData: TestDataTemplate = {
         [1.0, "1.00,000,000"],
         [1, "1.00,000,000"],
         [1.00000, "1.00,000,000"],
+    ],
+    fromBitcoinValidate: [
+        [210000000, "210000000.00,000,000", false]
     ],
     fromSats: [
         [123456789123, "1234.56,789,123"],
@@ -69,6 +74,9 @@ export const errorTestData: TestDataTemplate = {
         [21_000_001, errors.SATS_RANGE_ERR],
         [21e6, undefined],
         [211e6, errors.SATS_RANGE_ERR],
+    ],
+    fromBitcoinValidate: [
+        [0, undefined, true]
     ],
     fromSats: [
         [-1, errors.SATS_RANGE_ERR],

@@ -9,6 +9,14 @@ testData.fromBitcoin.forEach(assertPair => {
     })
 })
 
+// tests with default comma delimiter
+// tests for fromBitcoin()
+testData.fromBitcoinValidate.forEach(assertPair => {
+    test(`Test input: ${assertPair[0]}, with function fromBitcoin()`, () => {
+        expect(satcomma.fromBitcoin(assertPair[0], undefined, assertPair[2])).toBe(assertPair[1]);
+    })
+})
+
 // tests for fromSats()
 testData.fromSats.forEach(assertPair => {
     test(`Test input: ${assertPair[0]}, with function fromSats()`, () => {
