@@ -2,7 +2,7 @@ import errors from "../ts_src/errors"
 
 
 type AssertTuple = [number, string | undefined]
-type AssertTupleNoValidation = [number|BigInt, string | undefined, boolean | undefined]
+type AssertTupleNoValidation = [number, string | undefined, boolean | undefined]
 
 interface TestDataTemplate {
     fromBitcoin: Array<AssertTuple>;
@@ -62,7 +62,8 @@ export const testData: TestDataTemplate = {
     fromSatsNoValidation: [
         [21000000000000000, "210000000.00,000,000", false],
         [21000000000000000000, "210000000000.00,000,000", false],
-        [BigInt(21_000_000_000_000_000_000_000), "210000000000000.00,000,000", false],
+        [21_000_000_000_000_000_000_000, "210000000000000.00,000,000", false],
+        [21_000_000_000_000_000_000_000_000, "210000000000000000.00,000,000", false],
     ],
     fromSatsLhsDelimiter: [
         [21000000000, "210.00,000,000"],

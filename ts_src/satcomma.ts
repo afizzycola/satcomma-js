@@ -14,7 +14,7 @@ interface options {
     validateBitcoinMaxSupply?: boolean
 }
 
-export function fromBitcoin(valueInBitcoin: number | BigInt, {lhsDelimiter = '', rhsDelimiter = ',', validateBitcoinMaxSupply = true}: options = {}): string {
+export function fromBitcoin(valueInBitcoin: number, {lhsDelimiter = '', rhsDelimiter = ',', validateBitcoinMaxSupply = true}: options = {}): string {
 
     if (validateBitcoinMaxSupply) {
         checkMaxSatoshis(valueInBitcoin * 1e8);
@@ -38,15 +38,31 @@ export function fromBitcoin(valueInBitcoin: number | BigInt, {lhsDelimiter = '',
     return result
 }
 
-export function fromSats(valueInSats: number | BigInt,  {lhsDelimiter = '', rhsDelimiter = ',', validateBitcoinMaxSupply = true}: options = {}): string {
+export function fromSats(valueInSats: number,  {lhsDelimiter = '', rhsDelimiter = ',', validateBitcoinMaxSupply = true}: options = {}): string {
     if (!Number.isInteger(valueInSats)) {
       throw new TypeError(errors.SATS_NOT_INT_ERR)
     }
+    if (validateBitcoinMaxSupply) {
+        checkMaxSatoshis(valueInSats);
+    }
+    let valueArray = valueInSats.toString().split('').reverse()
+    valueArray[2] = rhsDelimiter + valueArray[2]
+    valueArray[5] = rhsDelimiter + valueArray[5]
+    valueArray[7] = '.' + valueArray[7]
+    let i = 7 + 3
+    while (i < valueArray.length - 1) {
+        valueArray[i] = lhsDelimiter + valueArray[i]
+        i += 3
+    }
     // convert satoshis to bitcoin
-    return fromBitcoin(valueInSats * 1e-8, {lhsDelimiter, rhsDelimiter, validateBitcoinMaxSupply})
+    //const valueInBitcoin = parseFloat(Math.ceil(valueInSats * 1e-8).toFixed(8))
+    //return fromBitcoin(valueInBitcoin, {lhsDelimiter, rhsDelimiter, validateBitcoinMaxSupply})
+    return valueArray.reverse().join('')
 }
 
-export function fromBits(valueInBip176Bits: number | BigInt,  {lhsDelimiter = '', rhsDelimiter = ',', validateBitcoinMaxSupply = true}: options = {}): string {
+console.log(fromSats(2100000000, {lhsDelimiter: '_', validateBitcoinMaxSupply: false}))
+
+export function fromBits(valueInBip176Bits: number,  {lhsDelimiter = '', rhsDelimiter = ',', validateBitcoinMaxSupply = true}: options = {}): string {
     if (!Number.isInteger(valueInBip176Bits)) {
         const decs = valueInBip176Bits.toString().split('.')[1];
         if (decs.length > 2) {
@@ -54,5 +70,6 @@ export function fromBits(valueInBip176Bits: number | BigInt,  {lhsDelimiter = ''
         }
     }
     // convert bits to bitcoin
-    return fromBitcoin(valueInBip176Bits / 1e6, {lhsDelimiter, rhsDelimiter, validateBitcoinMaxSupply})
+    const valueInBitcoin = parseFloat((valueInBip176Bits * 1e-6).toFixed(8))
+    return fromBitcoin(valueInBitcoin, {lhsDelimiter, rhsDelimiter, validateBitcoinMaxSupply})
 }
