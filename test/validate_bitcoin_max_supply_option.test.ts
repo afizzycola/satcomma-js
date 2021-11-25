@@ -1,4 +1,4 @@
-import {testData} from "./test_data";
+import {testData} from "./test_data/spec";
 import satcomma from "../ts_src/index";
 
 
