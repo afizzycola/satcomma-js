@@ -42,7 +42,7 @@ satcomma.fromSats(698000, {decimalDelimiter: "'"}) // => "0.00'698'000"
 
 satcomma.fromBitcoin(698000000000000.15000001, " ", {
     validateBitcoinMaxSupply: false, 
-    integerDelimiter = ","
+    integerDelimiter = ",",
     decimalDelimiter = " "
 }) // => "210,000,000,000,000.00 000 000"
 ```
