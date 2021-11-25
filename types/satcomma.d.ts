@@ -1,3 +1,10 @@
-export declare function fromBitcoin(valueInBitcoin: number, delimiterForSats?: string): string;
-export declare function fromSats(valueInSats: number, delimiterForSats?: string): string;
-export declare function fromBits(valueInBip176Bits: number, delimiterForSats?: string): string;
+interface options {
+    decimalDelimiter?: string;
+    integerDelimiter?: string;
+    validateBitcoinMaxSupply?: boolean;
+    decimalPlaces?: number;
+}
+export declare function fromBitcoin(valueInBitcoin: number, { integerDelimiter, decimalDelimiter, validateBitcoinMaxSupply, decimalPlaces }?: options): string;
+export declare function fromSats(valueInSats: number, { integerDelimiter, decimalDelimiter, validateBitcoinMaxSupply, decimalPlaces }?: options): string;
+export declare function fromBits(valueInBip176Bits: number, { integerDelimiter, decimalDelimiter, validateBitcoinMaxSupply, decimalPlaces }?: options): string;
+export {};
