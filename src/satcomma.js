@@ -9,7 +9,8 @@ const errors_1 = __importDefault(require("./errors"));
 const big_js_1 = __importDefault(require("big.js"));
 const MAX_SATOSHIS = 2100000000000000;
 function checkMaxSatoshis(satoshis) {
-    if (satoshis > MAX_SATOSHIS || satoshis < 0) {
+    const absSatoshis = Math.abs(satoshis);
+    if (absSatoshis > MAX_SATOSHIS || absSatoshis < 0) {
         throw new TypeError(errors_1.default.SATS_RANGE_ERR);
     }
 }

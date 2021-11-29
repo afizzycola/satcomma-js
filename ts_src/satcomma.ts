@@ -5,9 +5,10 @@ import Big from "big.js";
 
 const MAX_SATOSHIS = 2100000000000000;
 function checkMaxSatoshis (satoshis: number): void {
-  if (satoshis > MAX_SATOSHIS || satoshis < 0) {
-    throw new TypeError(errors.SATS_RANGE_ERR)
-  }
+    const absSatoshis = Math.abs(satoshis)
+    if (absSatoshis > MAX_SATOSHIS || absSatoshis < 0) {
+        throw new TypeError(errors.SATS_RANGE_ERR)
+    }
 }
 
 interface options {

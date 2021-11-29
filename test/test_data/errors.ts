@@ -18,7 +18,7 @@ interface ErrorTestDataTemplate {
 
 export const errorTestData: ErrorTestDataTemplate = {
     fromBitcoin: [
-        [-1, errors.SATS_RANGE_ERR],
+        [-1, undefined],
         [-1, undefined, {validateBitcoinMaxSupply: false}],
         [0, undefined],
         [1, undefined],
@@ -34,7 +34,7 @@ export const errorTestData: ErrorTestDataTemplate = {
         [20_999_999, errors.DECIMAL_PLACE_OPTION_NOT_INT_ERR, {decimalPlaces: 1.1}],
     ],
     fromSats: [
-        [-1, errors.SATS_RANGE_ERR],
+        [-1, undefined],
         [-1, undefined, {validateBitcoinMaxSupply: false}],
         [0, undefined],
         [1, undefined],
@@ -49,7 +49,7 @@ export const errorTestData: ErrorTestDataTemplate = {
         [20_999_999_00_000_000, errors.DECIMAL_PLACE_OPTION_NOT_INT_ERR, {decimalPlaces: 1.1}],
     ],
     fromBits: [
-        [-1, errors.SATS_RANGE_ERR],
+        [-1, undefined],
         [-1, undefined, {validateBitcoinMaxSupply: false}],
         [0, undefined],
         [1, undefined],
